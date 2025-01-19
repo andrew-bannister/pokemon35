@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('category');
             $table->unsignedTinyInteger('base_hp');
             $table->unsignedTinyInteger('base_attack');
-            $table->unsignedTinyInteger('base_defence');
+            $table->unsignedTinyInteger('base_defense');
             $table->unsignedTinyInteger('base_special_attack');
-            $table->unsignedTinyInteger('base_special_defence');
+            $table->unsignedTinyInteger('base_special_defense');
             $table->unsignedTinyInteger('base_speed');
             $table->string('image_url')->nullable();
             $table->timestamps();
