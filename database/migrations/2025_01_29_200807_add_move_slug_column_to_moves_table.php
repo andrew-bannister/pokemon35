@@ -11,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('move_pokemon', function (Blueprint $table) {
-            $table->id();
-            $table->integer('move_id');
-            $table->integer('pokemon_id');
+        Schema::table('moves', function (Blueprint $table) {
+            $table->string('move_slug')->after('name');
         });
     }
 
@@ -23,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('move_pokemon');
+        Schema::table('moves', function (Blueprint $table) {
+            $table->dropColumn('move_slug');
+        });
     }
 };

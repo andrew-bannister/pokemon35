@@ -8,6 +8,14 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Move extends Model
 {
+    protected $fillable = [
+        'name',
+        'move_slug',
+        'type',
+        'class',
+        'base_power',
+    ];
+
     public function pokemon(): BelongsToMany
     {
         return $this->belongsToMany(Pokemon::class);

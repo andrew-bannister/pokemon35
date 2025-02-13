@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('move_pokemon', function (Blueprint $table) {
-            $table->id();
-            $table->integer('move_id');
-            $table->integer('pokemon_id');
+        Schema::table('pokemon', function (Blueprint $table) {
+            $table->unsignedBigInteger('species_id')->after('category');
+
+            $table->foreign('species_id')->references('id')->on('pokemon_species');
         });
     }
 
@@ -23,6 +23,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('move_pokemon');
+        Schema::table('pokemon', function (Blueprint $table) {
+            $table->dropColumn('species_id');
+        });
     }
 };

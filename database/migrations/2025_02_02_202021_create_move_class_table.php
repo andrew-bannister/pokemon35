@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('move_pokemon', function (Blueprint $table) {
+        Schema::create('move_class', function (Blueprint $table) {
             $table->id();
-            $table->integer('move_id');
-            $table->integer('pokemon_id');
+            $table->string('name', 10);
+            $table->timestamps();
         });
     }
 
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('move_pokemon');
+        Schema::dropIfExists('move_class');
     }
 };

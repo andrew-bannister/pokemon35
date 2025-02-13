@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Ability extends Model
 {
+    protected $fillable = [
+        'name',
+    ];
+
     public function pokemon(): BelongsToMany
     {
         return $this->belongsToMany(Pokemon::class);

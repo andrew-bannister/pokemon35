@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Pokemon extends Model
@@ -12,6 +13,7 @@ class Pokemon extends Model
         'primary_type',
         'secondary_type',
         'category',
+        'species_id',
         'base_hp',
         'base_attack',
         'base_defense',
@@ -36,5 +38,10 @@ class Pokemon extends Model
     public function types(): HasMany
     {
         return $this->hasMany(Type::class);
+    }
+
+    public function species(): BelongsTo
+    {
+        return $this->belongsTo(PokemonSpecies::class);
     }
 }
