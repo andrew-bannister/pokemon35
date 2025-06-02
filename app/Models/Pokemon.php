@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Pokemon extends Model
@@ -30,14 +31,19 @@ class Pokemon extends Model
         return $this->hasMany(Ability::class);
     }
 
-    public function moves(): HasMany
+    public function moves(): BelongsToMany
     {
-        return $this->hasMany(Move::class);
+        return $this->belongsToMany(Move::class);
     }
 
-    public function types(): HasMany
+    public function primaryType(): BelongsTo
     {
-        return $this->hasMany(Type::class);
+        return $this->belongsTo(Type::class, 'primary_type');
+    }
+
+    public function secondaryType(): BelongsTo
+    {
+        return $this->belongsTo(Type::class, 'secondary_type');
     }
 
     public function species(): BelongsTo
